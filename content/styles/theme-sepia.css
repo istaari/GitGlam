@@ -20,7 +20,7 @@ body.gitglam-active.gitglam-theme-sepia .markdown-body {
   color: var(--gitglam-text) !important;
   background-color: var(--gitglam-bg) !important;
   font-family: 'Merriweather', 'Literata', Georgia, 'Noto Serif', serif !important;
-  font-size: 17px !important;
+  font-size: 16px !important;
 }
 
 body.gitglam-active.gitglam-theme-sepia .markdown-body h1,

@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const focusModeToggle = document.getElementById('focusModeToggle');
   const progressBarToggle = document.getElementById('progressBarToggle');
   const readingTimeToggle = document.getElementById('readingTimeToggle');
+  const animationsToggle = document.getElementById('animationsToggle');
   const noMarkdownNotice = document.getElementById('noMarkdownNotice');
   const settingsSection = document.getElementById('settingsSection');
 
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   focusModeToggle.checked = state.focusMode;
   progressBarToggle.checked = state.progressBar;
   readingTimeToggle.checked = state.readingTime;
+  animationsToggle.checked = state.animations;
   setActiveTheme(state.theme);
 
   // ---- Event listeners ----
@@ -72,6 +74,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   readingTimeToggle.addEventListener('change', () => {
     sendUpdate('readingTime', readingTimeToggle.checked);
+  });
+
+  animationsToggle.addEventListener('change', () => {
+    sendUpdate('animations', animationsToggle.checked);
   });
 
   // ---- Helpers ----

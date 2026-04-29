@@ -10,6 +10,7 @@
     focusMode: false,
     progressBar: true,
     readingTime: true,
+    animations: true,
   };
 
   let state = { ...DEFAULTS };
@@ -389,7 +390,9 @@
     GitGlamOutline.init();
 
     // Scroll animations
-    GitGlamAnimations.init(markdownBody);
+    if (state.animations) {
+      GitGlamAnimations.init(markdownBody);
+    }
 
     // Toggle button state
     GitGlamToggle.setActive(true);
@@ -443,6 +446,13 @@
         break;
       case 'focusMode':
         value ? GitGlamFocus.enable() : GitGlamFocus.disable();
+        break;
+      case 'animations':
+        if (value) {
+          GitGlamAnimations.init(markdownBody);
+        } else {
+          GitGlamAnimations.destroy(markdownBody);
+        }
         break;
       case 'progressBar':
       case 'readingTime':
