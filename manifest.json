@@ -30,6 +30,7 @@
         "content/image-lightbox.js",
         "content/reading-stats.js",
         "content/github-outline.js",
+        "content/animations.js",
         "content/content.js"
       ],
       "css": [

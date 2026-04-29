@@ -388,6 +388,9 @@
     // Enhance GitHub's native outline
     GitGlamOutline.init();
 
+    // Scroll animations
+    GitGlamAnimations.init(markdownBody);
+
     // Toggle button state
     GitGlamToggle.setActive(true);
 
@@ -404,6 +407,7 @@
     // Remove Nord CSS variable overrides from <html>
     applyNordOverrides('none');
 
+    GitGlamAnimations.destroy(markdownBody);
     GitGlamCodeBlocks.cleanup(markdownBody);
     GitGlamLightbox.destroy();
     GitGlamFocus.disable();
@@ -556,6 +560,7 @@
 
   function cleanup() {
     if (state.enabled) {
+      GitGlamAnimations.destroy(markdownBody);
       GitGlamCodeBlocks.cleanup(markdownBody);
       GitGlamLightbox.destroy();
       GitGlamFocus.disable();

@@ -28,6 +28,7 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 
 ### 🔍 Focus Mode
 - Hides GitHub navigation, sidebars, and chrome
+- Cinematic transitions — header slides up, sidebar slides away, elements fade out smoothly
 - Distraction-free reading experience
 - Toggle on/off from the popup
 
@@ -38,6 +39,11 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 ### 📊 Reading Stats
 - Reading progress bar at the top of the viewport
 - Estimated reading time badge
+
+### 🎬 Scroll Animations
+- Paragraphs and content blocks fade in and slide up as you scroll
+- Active paragraph highlight — the block you're reading stays fully visible while others dim
+- Creates a natural reading guide that keeps you focused
 
 ### 📑 Outline Enhancement
 - Styles GitHub's native table of contents panel to match your selected theme
@@ -88,8 +94,9 @@ GitGlam/
 ├── content/
 │   ├── content.js             # Main orchestrator
 │   ├── toggle-button.js       # Floating toggle button
-│   ├── focus-mode.js          # Hides GitHub UI chrome
+│   ├── focus-mode.js          # Hides GitHub UI chrome (cinematic transitions)
 │   ├── code-blocks.js         # Code block enhancements
+│   ├── animations.js          # Scroll animations & focus highlight
 │   ├── image-lightbox.js      # Image zoom overlay
 │   ├── reading-stats.js       # Progress bar & reading time
 │   ├── github-outline.js      # Outline panel theming
