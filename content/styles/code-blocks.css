@@ -1,0 +1,117 @@
+/* ============================================
+   GitGlam — Code Block Enhancements
+   ============================================ */
+
+body.gitglam-active .markdown-body .highlight,
+body.gitglam-active .markdown-body div[class*="highlight-source"],
+body.gitglam-active .markdown-body div[class*="highlight-text"],
+body.gitglam-active .markdown-body .snippet-clipboard-content {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+body.gitglam-active .markdown-body pre {
+  position: relative;
+  border-radius: 8px !important;
+  border: 1px solid var(--gitglam-border, #e5e7eb) !important;
+  background: var(--gitglam-code-bg, #f5f5f0) !important;
+  background-color: var(--gitglam-code-bg, #f5f5f0) !important;
+  color: var(--gitglam-text, #292929) !important;
+  padding: 16px !important;
+  margin: 1.5em 0 !important;
+  overflow-x: auto;
+}
+
+body.gitglam-active .markdown-body pre code {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace !important;
+  color: var(--gitglam-text, #292929) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  display: block !important;
+  white-space: pre !important;
+  word-wrap: normal !important;
+  overflow-x: auto !important;
+}
+
+/* Language label */
+.gitglam-code-lang {
+  position: absolute;
+  top: 0;
+  right: 40px;
+  background: var(--gitglam-border, #e5e7eb);
+  color: var(--gitglam-muted, #757575);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 0 0 6px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Copy button */
+.gitglam-copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: var(--gitglam-bg, #fff);
+  border: 1px solid var(--gitglam-border, #e5e7eb);
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--gitglam-muted, #757575);
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.15s ease;
+  z-index: 3;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+body.gitglam-active .markdown-body pre:hover .gitglam-copy-btn {
+  opacity: 1;
+}
+
+.gitglam-copy-btn:hover {
+  background: var(--gitglam-blockquote-bg, rgba(0, 0, 0, 0.06));
+  color: var(--gitglam-text, #292929);
+}
+
+.gitglam-copy-btn.gitglam-copied {
+  color: var(--gitglam-accent, #1a8917);
+  border-color: var(--gitglam-accent, #1a8917);
+}
+
+/* Copy icon SVG */
+.gitglam-copy-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Dark Luxe theme overrides for code */
+body.gitglam-active.gitglam-theme-dark-luxe .gitglam-code-lang {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gitglam-accent);
+}
+
+body.gitglam-active.gitglam-theme-dark-luxe .gitglam-copy-btn {
+  background: var(--gitglam-code-bg, #16162a);
+  border-color: var(--gitglam-border);
+  color: var(--gitglam-muted);
+}

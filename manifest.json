@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "GitGlam",
+  "version": "1.0.0",
+  "description": "Beautify GitHub markdown with stunning reading mode — enhanced typography, themes, and more.",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": [
+        "content/toggle-button.js",
+        "content/focus-mode.js",
+        "content/code-blocks.js",
+        "content/image-lightbox.js",
+        "content/reading-stats.js",
+        "content/github-outline.js",
+        "content/content.js"
+      ],
+      "css": [
+        "content/styles/base.css",
+        "content/styles/theme-medium.css",
+        "content/styles/theme-notion.css",
+        "content/styles/theme-sepia.css",
+        "content/styles/theme-nord.css",
+        "content/styles/code-blocks.css",
+        "content/styles/lightbox.css",
+        "content/styles/progress.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["fonts/*"],
+      "matches": ["https://github.com/*"]
+    }
+  ]
+}

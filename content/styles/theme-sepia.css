@@ -1,0 +1,92 @@
+/* ============================================
+   GitGlam — Sepia / Warm Book Theme
+   ============================================ */
+
+body.gitglam-active.gitglam-theme-sepia {
+  --gitglam-bg: #f4ecd8;
+  --gitglam-text: #433422;
+  --gitglam-accent: #8b4513;
+  --gitglam-accent-hover: #a0522d;
+  --gitglam-border: #d4c5a9;
+  --gitglam-blockquote-bg: rgba(139, 69, 19, 0.05);
+  --gitglam-table-header-bg: rgba(139, 69, 19, 0.06);
+  --gitglam-code-bg: #ede5d0;
+  --gitglam-inline-code-bg: rgba(139, 69, 19, 0.08);
+  --gitglam-heading-color: #2c1810;
+  --gitglam-muted: #7a6652;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body {
+  color: var(--gitglam-text) !important;
+  background-color: var(--gitglam-bg) !important;
+  font-family: 'Merriweather', 'Literata', Georgia, 'Noto Serif', serif !important;
+  font-size: 17px !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body h1,
+body.gitglam-active.gitglam-theme-sepia .markdown-body h2,
+body.gitglam-active.gitglam-theme-sepia .markdown-body h3,
+body.gitglam-active.gitglam-theme-sepia .markdown-body h4,
+body.gitglam-active.gitglam-theme-sepia .markdown-body h5,
+body.gitglam-active.gitglam-theme-sepia .markdown-body h6 {
+  color: var(--gitglam-heading-color) !important;
+  font-family: 'Merriweather', Georgia, serif !important;
+  font-weight: 900 !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body h1 {
+  font-size: 2em !important;
+  border-bottom: 2px solid var(--gitglam-accent) !important;
+  padding-bottom: 0.3em;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body h2 {
+  border-bottom: 1px solid var(--gitglam-border) !important;
+  padding-bottom: 0.2em;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body a {
+  color: var(--gitglam-accent) !important;
+  text-decoration: underline !important;
+  text-decoration-style: dotted !important;
+  text-underline-offset: 3px;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body a:hover {
+  color: var(--gitglam-accent-hover) !important;
+  text-decoration-style: solid !important;
+  border-bottom: none !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body blockquote {
+  border-left-color: var(--gitglam-accent) !important;
+  color: var(--gitglam-muted) !important;
+  background: var(--gitglam-blockquote-bg) !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body code:not(pre code) {
+  background: var(--gitglam-inline-code-bg) !important;
+  padding: 0.15em 0.4em !important;
+  border-radius: 3px;
+  font-size: 0.88em !important;
+  color: #6b3a1f !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body strong {
+  color: var(--gitglam-heading-color) !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body hr {
+  background: var(--gitglam-border) !important;
+  height: 2px !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body img {
+  border: 1px solid var(--gitglam-border);
+  box-shadow: 0 2px 8px rgba(67, 52, 34, 0.1);
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body pre {
+  background: var(--gitglam-code-bg) !important;
+  border-color: var(--gitglam-border) !important;
+}

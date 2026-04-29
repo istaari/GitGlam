@@ -1,0 +1,124 @@
+/* ============================================
+   GitGlam — Nord Theme
+   Cool-toned, modern, inspired by Nord palette
+   
+   NOTE: Page-level styling (header, tables, etc.) is handled
+   by JavaScript injection to win the cascade specificity war
+   against GitHub's dynamically-loaded styles.
+   Only .markdown-body typography rules live here.
+   ============================================ */
+
+body.gitglam-active.gitglam-theme-nord {
+  --gitglam-bg: #2e3440;
+  --gitglam-text: #d8dee9;
+  --gitglam-accent: #88c0d0;
+  --gitglam-accent-hover: #8fbcbb;
+  --gitglam-border: #3b4252;
+  --gitglam-blockquote-bg: rgba(136, 192, 208, 0.06);
+  --gitglam-table-header-bg: rgba(136, 192, 208, 0.08);
+  --gitglam-code-bg: #272c36;
+  --gitglam-inline-code-bg: rgba(136, 192, 208, 0.12);
+  --gitglam-heading-color: #eceff4;
+  --gitglam-muted: #7b88a1;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body {
+  color: #d8dee9 !important;
+  background-color: #2e3440 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body h1,
+body.gitglam-active.gitglam-theme-nord .markdown-body h2,
+body.gitglam-active.gitglam-theme-nord .markdown-body h3,
+body.gitglam-active.gitglam-theme-nord .markdown-body h4,
+body.gitglam-active.gitglam-theme-nord .markdown-body h5,
+body.gitglam-active.gitglam-theme-nord .markdown-body h6 {
+  color: #eceff4 !important;
+  font-weight: 700 !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body h1 {
+  border-bottom: 2px solid #81a1c1 !important;
+  padding-bottom: 0.3em;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body h2 {
+  border-bottom: 1px solid #3b4252 !important;
+  padding-bottom: 0.25em;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body a {
+  color: #88c0d0 !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body a:hover {
+  color: #8fbcbb !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body blockquote {
+  border-left-color: #81a1c1 !important;
+  color: #7b88a1 !important;
+  background: rgba(136, 192, 208, 0.06) !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body code:not(pre code) {
+  background: rgba(136, 192, 208, 0.12) !important;
+  padding: 0.15em 0.4em !important;
+  border-radius: 4px;
+  font-size: 0.88em !important;
+  color: #a3be8c !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body strong {
+  color: #eceff4 !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body hr {
+  background: #3b4252 !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body img {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body pre {
+  background: #272c36 !important;
+  border-color: #3b4252 !important;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body li {
+  color: #d8dee9 !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body p {
+  color: #d8dee9 !important;
+}
+
+/* Code block overrides for Nord */
+body.gitglam-active.gitglam-theme-nord .gitglam-code-lang {
+  background: rgba(136, 192, 208, 0.15);
+  color: #88c0d0;
+}
+
+body.gitglam-active.gitglam-theme-nord .gitglam-copy-btn {
+  background: #272c36;
+  border-color: #3b4252;
+  color: #7b88a1;
+}
+
+/* Toggle button for Nord */
+body.gitglam-active.gitglam-theme-nord .gitglam-toggle-btn {
+  background: #81a1c1;
+  box-shadow: 0 4px 12px rgba(129, 161, 193, 0.35);
+}
+
+body.gitglam-active.gitglam-theme-nord .gitglam-toggle-btn.gitglam-toggle-active {
+  background: #5e81ac;
+}
+
+body.gitglam-active.gitglam-theme-nord .gitglam-progress-bar {
+  background: #81a1c1;
+}

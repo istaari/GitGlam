@@ -1,0 +1,79 @@
+/* ============================================
+   GitGlam — Notion Theme
+   ============================================ */
+
+body.gitglam-active.gitglam-theme-notion {
+  --gitglam-bg: #ffffff;
+  --gitglam-text: #37352f;
+  --gitglam-accent: #2eaadc;
+  --gitglam-accent-hover: #1a8cb8;
+  --gitglam-border: #e9e9e7;
+  --gitglam-blockquote-bg: #f7f6f3;
+  --gitglam-table-header-bg: #f7f6f3;
+  --gitglam-code-bg: #f7f6f3;
+  --gitglam-inline-code-bg: #f1d9d5;
+  --gitglam-heading-color: #37352f;
+  --gitglam-muted: #9b9a97;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body {
+  color: var(--gitglam-text) !important;
+  background-color: var(--gitglam-bg) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji' !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body h1,
+body.gitglam-active.gitglam-theme-notion .markdown-body h2,
+body.gitglam-active.gitglam-theme-notion .markdown-body h3,
+body.gitglam-active.gitglam-theme-notion .markdown-body h4,
+body.gitglam-active.gitglam-theme-notion .markdown-body h5,
+body.gitglam-active.gitglam-theme-notion .markdown-body h6 {
+  color: var(--gitglam-heading-color) !important;
+  font-weight: 700 !important;
+  border-bottom: none !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body h1 {
+  font-size: 2.5em !important;
+  margin-top: 2em !important;
+  letter-spacing: -0.03em;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body a {
+  color: var(--gitglam-accent) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(46, 170, 220, 0.4) !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body a:hover {
+  text-decoration-color: var(--gitglam-accent) !important;
+  border-bottom: none !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body blockquote {
+  border-left-color: #000 !important;
+  background: transparent !important;
+  font-style: normal;
+  color: var(--gitglam-text) !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body code:not(pre code) {
+  background: var(--gitglam-inline-code-bg) !important;
+  padding: 0.15em 0.4em !important;
+  border-radius: 4px;
+  font-size: 0.88em !important;
+  color: #eb5757 !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body hr {
+  background: var(--gitglam-border) !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body ul {
+  list-style-type: disc !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body li::marker {
+  color: var(--gitglam-text) !important;
+}
