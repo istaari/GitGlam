@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const progressBarToggle = document.getElementById('progressBarToggle');
   const readingTimeToggle = document.getElementById('readingTimeToggle');
   const animationsToggle = document.getElementById('animationsToggle');
+  const fontSizeRange = document.getElementById('fontSizeRange');
+  const fontSizeValue = document.getElementById('fontSizeValue');
   const noMarkdownNotice = document.getElementById('noMarkdownNotice');
   const settingsSection = document.getElementById('settingsSection');
 
@@ -45,6 +47,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   progressBarToggle.checked = state.progressBar;
   readingTimeToggle.checked = state.readingTime;
   animationsToggle.checked = state.animations;
+  fontSizeRange.value = state.fontSize || 16;
+  fontSizeValue.textContent = (state.fontSize || 16) + 'px';
   setActiveTheme(state.theme);
 
   // ---- Event listeners ----
@@ -78,6 +82,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   animationsToggle.addEventListener('change', () => {
     sendUpdate('animations', animationsToggle.checked);
+  });
+
+  // Font size slider
+  fontSizeRange.addEventListener('input', () => {
+    const size = parseInt(fontSizeRange.value);
+    fontSizeValue.textContent = size + 'px';
+    sendUpdate('fontSize', size);
   });
 
   // ---- Helpers ----

@@ -152,22 +152,18 @@ body.gitglam-active ${ITEM_ACTIVE} a {
 
 body.gitglam-active ${LEVEL1} {
   font-weight: 700 !important;
-  font-size: 13px !important;
   color: ${c.text} !important;
 }
 body.gitglam-active ${LEVEL2} {
   font-weight: 600 !important;
-  font-size: 12.5px !important;
   color: ${c.text} !important;
   padding-left: 8px !important;
 }
 body.gitglam-active ${LEVEL3} {
-  font-size: 12px !important;
   color: ${c.muted} !important;
   padding-left: 16px !important;
 }
 body.gitglam-active ${LEVEL4} {
-  font-size: 11.5px !important;
   color: ${c.muted} !important;
   padding-left: 24px !important;
 }

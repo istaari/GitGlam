@@ -11,6 +11,7 @@
     progressBar: true,
     readingTime: true,
     animations: true,
+    fontSize: 16,
   };
 
   let state = { ...DEFAULTS };
@@ -361,6 +362,56 @@
     });
   }
 
+  // ---- Font size ----
+
+  let fontSizeStyleEl = null;
+
+  function applyFontSize(size) {
+    if (!markdownBody) return;
+
+    if (size === null) {
+      markdownBody.style.removeProperty('font-size');
+      if (fontSizeStyleEl && fontSizeStyleEl.parentNode) {
+        fontSizeStyleEl.remove();
+      }
+      fontSizeStyleEl = null;
+      return;
+    }
+
+    markdownBody.style.setProperty('font-size', size + 'px', 'important');
+
+    // Inject a style rule for the outline so it works even if outline loads later
+    const outlineSize = Math.max(11, Math.round(size * 0.8));
+    if (!fontSizeStyleEl) {
+      fontSizeStyleEl = document.createElement('style');
+      fontSizeStyleEl.id = 'gitglam-fontsize';
+    }
+    fontSizeStyleEl.textContent = `
+      body.gitglam-active section[aria-labelledby="outline-id"] {
+        font-size: ${outlineSize}px !important;
+      }
+      body.gitglam-active section[aria-labelledby="outline-id"] nav,
+      body.gitglam-active section[aria-labelledby="outline-id"] ul,
+      body.gitglam-active section[aria-labelledby="outline-id"] li,
+      body.gitglam-active section[aria-labelledby="outline-id"] a {
+        font-size: inherit !important;
+      }
+      body.gitglam-active section[aria-labelledby="outline-id"] [class*="TocLevel1"] {
+        font-size: ${outlineSize}px !important;
+      }
+      body.gitglam-active section[aria-labelledby="outline-id"] [class*="TocLevel2"] {
+        font-size: ${Math.max(10, outlineSize - 1)}px !important;
+      }
+      body.gitglam-active section[aria-labelledby="outline-id"] [class*="TocLevel3"] {
+        font-size: ${Math.max(10, outlineSize - 2)}px !important;
+      }
+      body.gitglam-active section[aria-labelledby="outline-id"] [class*="TocLevel4"] {
+        font-size: ${Math.max(9, outlineSize - 3)}px !important;
+      }
+    `;
+    document.body.appendChild(fontSizeStyleEl);
+  }
+
   // ---- Reading mode ----
 
   function activateReadingMode() {
@@ -394,6 +445,9 @@
       GitGlamAnimations.init(markdownBody);
     }
 
+    // Apply font size
+    applyFontSize(state.fontSize);
+
     // Toggle button state
     GitGlamToggle.setActive(true);
 
@@ -409,6 +463,9 @@
 
     // Remove Nord CSS variable overrides from <html>
     applyNordOverrides('none');
+
+    // Reset font size
+    applyFontSize(null);
 
     GitGlamAnimations.destroy(markdownBody);
     GitGlamCodeBlocks.cleanup(markdownBody);
@@ -453,6 +510,9 @@
         } else {
           GitGlamAnimations.destroy(markdownBody);
         }
+        break;
+      case 'fontSize':
+        applyFontSize(value);
         break;
       case 'progressBar':
       case 'readingTime':
