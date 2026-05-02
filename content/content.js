@@ -9,7 +9,6 @@
     theme: 'medium',
     focusMode: false,
     progressBar: true,
-    readingTime: true,
     animations: true,
     fontSize: 16,
     columnWidth: 1000,
@@ -382,15 +381,15 @@
 
     markdownBody.style.setProperty('font-size', size + 'px', 'important');
 
-    // Inject a style rule for the outline so it works even if outline loads later
-    const outlineSize = Math.max(11, Math.round(size * 0.8));
+    // Scale outline font to match markdown body font size proportionally
+    const base = Math.max(11, Math.round(size * 0.75));
     if (!fontSizeStyleEl) {
       fontSizeStyleEl = document.createElement('style');
       fontSizeStyleEl.id = 'gitglam-fontsize';
     }
     fontSizeStyleEl.textContent = `
       body.gitglam-active section[aria-labelledby="outline-id"] {
-        font-size: ${outlineSize}px !important;
+        font-size: ${base}px !important;
       }
       body.gitglam-active section[aria-labelledby="outline-id"] nav,
       body.gitglam-active section[aria-labelledby="outline-id"] ul,
@@ -399,16 +398,18 @@
         font-size: inherit !important;
       }
       body.gitglam-active section[aria-labelledby="outline-id"] [class*="TocLevel1"] {
-        font-size: ${outlineSize}px !important;
+        font-size: ${Math.round(base * 1.2)}px !important;
+        font-weight: 600 !important;
       }
       body.gitglam-active section[aria-labelledby="outline-id"] [class*="TocLevel2"] {
-        font-size: ${Math.max(10, outlineSize - 1)}px !important;
+        font-size: ${base}px !important;
+        font-weight: 500 !important;
       }
       body.gitglam-active section[aria-labelledby="outline-id"] [class*="TocLevel3"] {
-        font-size: ${Math.max(10, outlineSize - 2)}px !important;
+        font-size: ${Math.round(base * 0.9)}px !important;
       }
       body.gitglam-active section[aria-labelledby="outline-id"] [class*="TocLevel4"] {
-        font-size: ${Math.max(9, outlineSize - 3)}px !important;
+        font-size: ${Math.round(base * 0.82)}px !important;
       }
     `;
     document.body.appendChild(fontSizeStyleEl);
@@ -466,6 +467,52 @@
     }, 420);
   }
 
+  // ---- Focus Mode Toggle Button ----
+
+  let focusToggleBtn = null;
+
+  function createFocusToggle() {
+    if (focusToggleBtn) return;
+    focusToggleBtn = document.createElement('button');
+    focusToggleBtn.className = 'gitglam-focus-toggle';
+    focusToggleBtn.setAttribute('aria-label', 'Toggle focus mode');
+    focusToggleBtn.title = 'Toggle focus mode';
+    updateFocusToggleIcon();
+
+    focusToggleBtn.addEventListener('click', () => {
+      state.focusMode = !state.focusMode;
+      saveState();
+      if (state.focusMode) {
+        GitGlamFocus.enable();
+      } else {
+        GitGlamFocus.disable();
+      }
+      updateFocusToggleIcon();
+    });
+
+    // Insert as fixed button on the page
+    document.body.appendChild(focusToggleBtn);
+  }
+
+  function updateFocusToggleIcon() {
+    if (!focusToggleBtn) return;
+    const active = state.focusMode;
+    focusToggleBtn.classList.toggle('gitglam-focus-toggle-active', active);
+    // Eye icon (focus off) / Eye-off icon (focus on)
+    if (active) {
+      focusToggleBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+    } else {
+      focusToggleBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+    }
+  }
+
+  function destroyFocusToggle() {
+    if (focusToggleBtn) {
+      focusToggleBtn.remove();
+      focusToggleBtn = null;
+    }
+  }
+
   function activateReadingMode() {
     if (!markdownBody) return;
 
@@ -486,7 +533,6 @@
     // Reading stats
     GitGlamReadingStats.init(markdownBody, {
       progressBar: state.progressBar,
-      readingTime: state.readingTime,
     });
 
     // Enhance GitHub's native outline
@@ -508,11 +554,11 @@
       enableNightShift();
     }
 
-    // Toggle button state
-    GitGlamToggle.setActive(true);
-
     // Notify service worker
     chrome.runtime.sendMessage({ type: 'gitglam:state', enabled: true });
+
+    // Focus toggle button on page
+    createFocusToggle();
   }
 
   function deactivateReadingMode() {
@@ -537,7 +583,7 @@
     GitGlamFocus.disable();
     GitGlamReadingStats.destroy();
     GitGlamOutline.destroy();
-    GitGlamToggle.setActive(false);
+    destroyFocusToggle();
 
     chrome.runtime.sendMessage({ type: 'gitglam:state', enabled: false });
   }
@@ -567,6 +613,7 @@
         break;
       case 'focusMode':
         value ? GitGlamFocus.enable() : GitGlamFocus.disable();
+        updateFocusToggleIcon();
         break;
       case 'animations':
         if (value) {
@@ -585,11 +632,9 @@
         value ? enableNightShift() : disableNightShift();
         break;
       case 'progressBar':
-      case 'readingTime':
         GitGlamReadingStats.destroy();
         GitGlamReadingStats.init(markdownBody, {
           progressBar: state.progressBar,
-          readingTime: state.readingTime,
         });
         break;
     }
@@ -627,14 +672,11 @@
   function setup() {
     markdownBody = findMarkdownBody();
     if (!markdownBody) {
-      GitGlamToggle.destroy();
       if (state.enabled) {
         deactivateReadingMode();
       }
       return;
     }
-
-    GitGlamToggle.create(toggleReadingMode);
 
     if (state.enabled) {
       activateReadingMode();
@@ -688,6 +730,7 @@
       GitGlamFocus.disable();
       GitGlamReadingStats.destroy();
       GitGlamOutline.destroy();
+      destroyFocusToggle();
     }
   }
 

@@ -15,12 +15,11 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 | **🖥️ Code Blocks** | Language labels, one-click copy, clean single-box design |
 | **🔍 Focus Mode** | Hides GitHub chrome with cinematic slide/fade transitions |
 | **🖼️ Image Lightbox** | Click any image to view full-size in a smooth zoom overlay |
-| **📊 Reading Stats** | Progress bar + reading time badge pinned to the top-right corner |
+| **📊 Progress Bar** | Reading progress indicator fixed at the top of the viewport |
 | **🎬 Scroll Animations** | Content fades in as you scroll; active paragraph stays highlighted |
 | **📑 Outline Theming** | GitHub's native TOC panel styled to match your selected theme |
 | **🔤 Font Size** | Slider control (12–24px), scales content and outline proportionally |
 | **🌙 Night Shift** | Warm color filter to reduce eye strain in low light |
-| **🫥 Auto-Hide Toggle** | Floating button fades out after 3 seconds of inactivity |
 
 ---
 
@@ -39,7 +38,7 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 
 4. Click **Load unpacked** and select the `GitGlam` folder
 
-5. Navigate to any GitHub markdown file or repository README and click the GitGlam icon or the floating toggle button
+5. Navigate to any GitHub markdown file or repository README and click the GitGlam icon to activate
 
 ---
 
@@ -47,7 +46,7 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 
 1. Navigate to any GitHub page with markdown content (README, `.md` files, issues, comments)
 2. Select your preferred theme from the popup
-3. Toggle features like Focus Mode, Progress Bar, and Reading Time
+3. Toggle features like Focus Mode, Progress Bar, and Scroll Animations
 
 ---
 
@@ -60,12 +59,11 @@ GitGlam/
 │   └── service-worker.js      # Badge state & message relay
 ├── content/
 │   ├── content.js             # Main orchestrator
-│   ├── toggle-button.js       # Floating toggle button
 │   ├── focus-mode.js          # Hides GitHub UI chrome (cinematic transitions)
 │   ├── code-blocks.js         # Code block enhancements
 │   ├── animations.js          # Scroll animations & focus highlight
 │   ├── image-lightbox.js      # Image zoom overlay
-│   ├── reading-stats.js       # Progress bar & reading time
+│   ├── reading-stats.js       # Reading progress bar
 │   ├── github-outline.js      # Outline panel theming
 │   └── styles/
 │       ├── base.css           # Core reading mode layout

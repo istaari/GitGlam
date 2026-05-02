@@ -11,7 +11,6 @@ chrome.runtime.onInstalled.addListener(() => {
           theme: 'medium',
           focusMode: false,
           progressBar: true,
-          readingTime: true,
         },
       });
     }

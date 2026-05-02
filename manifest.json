@@ -24,7 +24,6 @@
     {
       "matches": ["https://github.com/*"],
       "js": [
-        "content/toggle-button.js",
         "content/focus-mode.js",
         "content/code-blocks.js",
         "content/image-lightbox.js",

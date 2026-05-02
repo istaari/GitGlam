@@ -1,14 +1,10 @@
 // GitGlam — Reading Stats Module
-// Progress bar + estimated reading time.
+// Progress bar.
 
 const GitGlamReadingStats = (() => {
   let progressBar = null;
-  let readingTimeBadge = null;
   let scrollHandler = null;
   let markdownBodyRef = null;
-
-  const CLOCK_ICON = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
-  const WPM = 230;
 
   function init(markdownBody, options = {}) {
     destroy();
@@ -16,10 +12,6 @@ const GitGlamReadingStats = (() => {
 
     if (options.progressBar !== false) {
       createProgressBar();
-    }
-
-    if (options.readingTime !== false) {
-      createReadingTimeBadge(markdownBody);
     }
   }
 
@@ -45,22 +37,6 @@ const GitGlamReadingStats = (() => {
     scrollHandler(); // initial
   }
 
-  function createReadingTimeBadge(markdownBody) {
-    // Count words: exclude code blocks
-    const clone = markdownBody.cloneNode(true);
-    clone.querySelectorAll('pre, code, script, style').forEach((el) => el.remove());
-    const text = clone.textContent || '';
-    const words = text.trim().split(/\s+/).filter(Boolean).length;
-    const minutes = Math.max(1, Math.round(words / WPM));
-
-    readingTimeBadge = document.createElement('div');
-    readingTimeBadge.className = 'gitglam-reading-time';
-    readingTimeBadge.innerHTML = `${CLOCK_ICON} <span>${minutes} min read &middot; ${words.toLocaleString()} words</span>`;
-
-    // Insert at very top of markdown body (floats to top-right via CSS)
-    markdownBody.prepend(readingTimeBadge);
-  }
-
   function destroy() {
     if (scrollHandler) {
       window.removeEventListener('scroll', scrollHandler);
@@ -69,10 +45,6 @@ const GitGlamReadingStats = (() => {
     if (progressBar) {
       progressBar.remove();
       progressBar = null;
-    }
-    if (readingTimeBadge) {
-      readingTimeBadge.remove();
-      readingTimeBadge = null;
     }
     markdownBodyRef = null;
   }

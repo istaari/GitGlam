@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const themeGrid = document.getElementById('themeGrid');
   const focusModeToggle = document.getElementById('focusModeToggle');
   const progressBarToggle = document.getElementById('progressBarToggle');
-  const readingTimeToggle = document.getElementById('readingTimeToggle');
   const animationsToggle = document.getElementById('animationsToggle');
   const nightShiftToggle = document.getElementById('nightShiftToggle');
   const fontSizeRange = document.getElementById('fontSizeRange');
@@ -48,7 +47,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   enableToggle.checked = state.enabled;
   focusModeToggle.checked = state.focusMode;
   progressBarToggle.checked = state.progressBar;
-  readingTimeToggle.checked = state.readingTime;
   animationsToggle.checked = state.animations;
   nightShiftToggle.checked = state.nightShift;
   fontSizeRange.value = state.fontSize || 16;
@@ -80,10 +78,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   progressBarToggle.addEventListener('change', () => {
     sendUpdate('progressBar', progressBarToggle.checked);
-  });
-
-  readingTimeToggle.addEventListener('change', () => {
-    sendUpdate('readingTime', readingTimeToggle.checked);
   });
 
   animationsToggle.addEventListener('change', () => {

@@ -15,6 +15,12 @@ const GitGlamFocus = (() => {
     '.pagehead',
     '.reponav',
     '.js-repo-nav',
+    // Commit history / description bar — target the parent container
+    '.border.rounded-2:has([class*="LatestCommit"])',
+    '[class*="OverviewHeader"]',
+    '[class*="OverviewRepoFiles"]',
+    '[class*="DirectoryContent"]',
+    '.BorderGrid',
   ];
 
   let active = false;
