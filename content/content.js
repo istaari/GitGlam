@@ -12,6 +12,8 @@
     readingTime: true,
     animations: true,
     fontSize: 16,
+    columnWidth: 1000,
+    nightShift: false,
   };
 
   let state = { ...DEFAULTS };
@@ -412,7 +414,57 @@
     document.body.appendChild(fontSizeStyleEl);
   }
 
-  // ---- Reading mode ----
+  // ---- Column width ----
+
+  let columnWidthStyleEl = null;
+
+  function applyColumnWidth(width) {
+    if (!markdownBody) return;
+
+    if (width === null) {
+      markdownBody.style.removeProperty('max-width');
+      if (columnWidthStyleEl && columnWidthStyleEl.parentNode) {
+        columnWidthStyleEl.remove();
+      }
+      columnWidthStyleEl = null;
+      return;
+    }
+
+    markdownBody.style.setProperty('max-width', width + 'px', 'important');
+  }
+
+  // ---- Night Shift ----
+
+  let nightShiftEl = null;
+
+  function enableNightShift() {
+    if (nightShiftEl) return;
+    nightShiftEl = document.createElement('div');
+    nightShiftEl.className = 'gitglam-nightshift';
+    nightShiftEl.style.cssText = `
+      position: fixed; inset: 0; z-index: 99990;
+      background: rgba(255, 160, 50, 0.12);
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      transition: opacity 0.4s ease;
+      opacity: 0;
+    `;
+    document.body.appendChild(nightShiftEl);
+    requestAnimationFrame(() => {
+      nightShiftEl.style.opacity = '1';
+    });
+  }
+
+  function disableNightShift() {
+    if (!nightShiftEl) return;
+    nightShiftEl.style.opacity = '0';
+    setTimeout(() => {
+      if (nightShiftEl && nightShiftEl.parentNode) {
+        nightShiftEl.remove();
+      }
+      nightShiftEl = null;
+    }, 420);
+  }
 
   function activateReadingMode() {
     if (!markdownBody) return;
@@ -448,6 +500,14 @@
     // Apply font size
     applyFontSize(state.fontSize);
 
+    // Apply column width
+    applyColumnWidth(state.columnWidth);
+
+    // Night shift
+    if (state.nightShift) {
+      enableNightShift();
+    }
+
     // Toggle button state
     GitGlamToggle.setActive(true);
 
@@ -467,6 +527,10 @@
     // Reset font size
     applyFontSize(null);
 
+    // Reset column width
+    applyColumnWidth(null);
+
+    disableNightShift();
     GitGlamAnimations.destroy(markdownBody);
     GitGlamCodeBlocks.cleanup(markdownBody);
     GitGlamLightbox.destroy();
@@ -513,6 +577,12 @@
         break;
       case 'fontSize':
         applyFontSize(value);
+        break;
+      case 'columnWidth':
+        applyColumnWidth(value);
+        break;
+      case 'nightShift':
+        value ? enableNightShift() : disableNightShift();
         break;
       case 'progressBar':
       case 'readingTime':
@@ -611,6 +681,7 @@
 
   function cleanup() {
     if (state.enabled) {
+      disableNightShift();
       GitGlamAnimations.destroy(markdownBody);
       GitGlamCodeBlocks.cleanup(markdownBody);
       GitGlamLightbox.destroy();

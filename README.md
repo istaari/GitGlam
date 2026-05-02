@@ -8,50 +8,19 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 
 ## Features
 
-### 🎨 4 Beautiful Themes
-- **Medium** — Warm serif typography inspired by Medium/Substack
-- **Notion** — Clean, minimal styling inspired by Notion
-- **Sepia** — Warm, easy-on-the-eyes parchment tones
-- **Nord** — Cool-toned dark theme using the Nord color palette
-
-### 📖 Reading Mode
-- Optimized typography with proper line-height, spacing, and font sizing
-- Centered, max-width layout (1000px) for comfortable reading
-- Smooth fade-in transition when activated
-
-### 🖥️ Code Block Enhancements
-- Syntax highlighting with theme-appropriate colors
-- Language labels on code blocks
-- One-click copy-to-clipboard button
-- Clean single-box presentation (removes GitHub's native toolbar clutter)
-- Works correctly regardless of GitHub's light/dark mode setting
-
-### 🔍 Focus Mode
-- Hides GitHub navigation, sidebars, and chrome
-- Cinematic transitions — header slides up, sidebar slides away, elements fade out smoothly
-- Distraction-free reading experience
-- Toggle on/off from the popup
-
-### 🖼️ Image Lightbox
-- Click any image to view full-size in an overlay
-- Smooth zoom animation
-
-### 📊 Reading Stats
-- Reading progress bar at the top of the viewport
-- Estimated reading time badge
-
-### 🎬 Scroll Animations
-- Paragraphs and content blocks fade in and slide up as you scroll
-- Active paragraph highlight — the block you're reading stays fully visible while others dim
-- Creates a natural reading guide that keeps you focused
-
-### 📑 Outline Enhancement
-- Styles GitHub's native table of contents panel to match your selected theme
-
-### 🔤 Font Size Resizer
-- Adjust font size with a smooth slider (12px–24px)
-- Scales both markdown content and the outline panel proportionally
-- Preference persists across sessions
+| Feature | Description |
+|---------|-------------|
+| **🎨 4 Themes** | Medium, Notion, Sepia, and Nord — each with matched code syntax colors |
+| **📖 Reading Mode** | Optimized typography, centered layout, adjustable column width (600–1400px) |
+| **🖥️ Code Blocks** | Language labels, one-click copy, clean single-box design |
+| **🔍 Focus Mode** | Hides GitHub chrome with cinematic slide/fade transitions |
+| **🖼️ Image Lightbox** | Click any image to view full-size in a smooth zoom overlay |
+| **📊 Reading Stats** | Progress bar + reading time badge pinned to the top-right corner |
+| **🎬 Scroll Animations** | Content fades in as you scroll; active paragraph stays highlighted |
+| **📑 Outline Theming** | GitHub's native TOC panel styled to match your selected theme |
+| **🔤 Font Size** | Slider control (12–24px), scales content and outline proportionally |
+| **🌙 Night Shift** | Warm color filter to reduce eye strain in low light |
+| **🫥 Auto-Hide Toggle** | Floating button fades out after 3 seconds of inactivity |
 
 ---
 

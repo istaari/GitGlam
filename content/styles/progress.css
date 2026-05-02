@@ -15,8 +15,11 @@
   border-radius: 0 2px 2px 0;
 }
 
-/* Reading time badge */
+/* Reading time badge — top-right of markdown area */
 .gitglam-reading-time {
+  position: sticky;
+  top: 8px;
+  float: right;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -26,9 +29,12 @@
   padding: 6px 12px;
   background: var(--gitglam-blockquote-bg, rgba(0, 0, 0, 0.04));
   border-radius: 20px;
-  margin-bottom: 24px;
+  margin: 0 0 16px 16px;
   font-weight: 500;
   letter-spacing: 0.01em;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .gitglam-reading-time svg {

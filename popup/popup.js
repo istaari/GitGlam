@@ -8,8 +8,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const progressBarToggle = document.getElementById('progressBarToggle');
   const readingTimeToggle = document.getElementById('readingTimeToggle');
   const animationsToggle = document.getElementById('animationsToggle');
+  const nightShiftToggle = document.getElementById('nightShiftToggle');
   const fontSizeRange = document.getElementById('fontSizeRange');
   const fontSizeValue = document.getElementById('fontSizeValue');
+  const columnWidthRange = document.getElementById('columnWidthRange');
+  const columnWidthValue = document.getElementById('columnWidthValue');
   const noMarkdownNotice = document.getElementById('noMarkdownNotice');
   const settingsSection = document.getElementById('settingsSection');
 
@@ -47,8 +50,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   progressBarToggle.checked = state.progressBar;
   readingTimeToggle.checked = state.readingTime;
   animationsToggle.checked = state.animations;
+  nightShiftToggle.checked = state.nightShift;
   fontSizeRange.value = state.fontSize || 16;
   fontSizeValue.textContent = (state.fontSize || 16) + 'px';
+  columnWidthRange.value = state.columnWidth || 1000;
+  columnWidthValue.textContent = (state.columnWidth || 1000) + 'px';
   setActiveTheme(state.theme);
 
   // ---- Event listeners ----
@@ -84,11 +90,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     sendUpdate('animations', animationsToggle.checked);
   });
 
+  nightShiftToggle.addEventListener('change', () => {
+    sendUpdate('nightShift', nightShiftToggle.checked);
+  });
+
   // Font size slider
   fontSizeRange.addEventListener('input', () => {
     const size = parseInt(fontSizeRange.value);
     fontSizeValue.textContent = size + 'px';
     sendUpdate('fontSize', size);
+  });
+
+  // Column width slider
+  columnWidthRange.addEventListener('input', () => {
+    const width = parseInt(columnWidthRange.value);
+    columnWidthValue.textContent = width + 'px';
+    sendUpdate('columnWidth', width);
   });
 
   // ---- Helpers ----

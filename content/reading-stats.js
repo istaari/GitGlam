@@ -57,13 +57,8 @@ const GitGlamReadingStats = (() => {
     readingTimeBadge.className = 'gitglam-reading-time';
     readingTimeBadge.innerHTML = `${CLOCK_ICON} <span>${minutes} min read &middot; ${words.toLocaleString()} words</span>`;
 
-    // Insert at top of markdown body
-    const firstChild = markdownBody.firstChild;
-    if (firstChild) {
-      markdownBody.insertBefore(readingTimeBadge, firstChild);
-    } else {
-      markdownBody.appendChild(readingTimeBadge);
-    }
+    // Insert at very top of markdown body (floats to top-right via CSS)
+    markdownBody.prepend(readingTimeBadge);
   }
 
   function destroy() {
