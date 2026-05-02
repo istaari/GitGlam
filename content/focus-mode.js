@@ -15,12 +15,19 @@ const GitGlamFocus = (() => {
     '.pagehead',
     '.reponav',
     '.js-repo-nav',
-    // Commit history / description bar — target the parent container
+    // Commit history / description bar
     '.border.rounded-2:has([class*="LatestCommit"])',
     '[class*="OverviewHeader"]',
-    '[class*="OverviewRepoFiles"]',
-    '[class*="DirectoryContent"]',
+    // File listing table (but NOT the README below it)
+    '[class*="DirectoryContent-module__OverviewHeaderRow"]',
+    '[class*="DirectoryContent-module__Box_1"]',
+    '[class*="DirectoryContent-module__Box_2"]',
+    '[class*="DirectoryContent-module__Box_3"]',
+    'table:has(.react-directory-row)',
+    // Repo about sidebar
     '.BorderGrid',
+    // File tree nav tabs (Code/Readme/etc inside OverviewRepoFiles)
+    '[class*="OverviewRepoFiles-module__UnderlineNav"]',
   ];
 
   let active = false;
@@ -75,8 +82,13 @@ const GitGlamFocus = (() => {
     styleInjected = true;
   }
 
+  function isBlobPage() {
+    return /\/blob\//.test(window.location.pathname);
+  }
+
   function enable() {
     if (active) return;
+    if (!isBlobPage()) return;
     injectStyle();
     active = true;
     document.body.classList.add('gitglam-focus-active');
