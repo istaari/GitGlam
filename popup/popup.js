@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Check if we're on a GitHub page
   if (!tab?.url?.startsWith('https://github.com/')) {
     noMarkdownNotice.style.display = 'block';
-    noMarkdownNotice.querySelector('p').textContent = 'GitGlam works on GitHub pages.';
+    noMarkdownNotice.querySelector('p').textContent = 'GitGlam works on GitHub markdown pages.';
     settingsSection.style.opacity = '0.5';
     settingsSection.style.pointerEvents = 'none';
     return;

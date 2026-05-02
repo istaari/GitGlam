@@ -48,11 +48,10 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 ### 📑 Outline Enhancement
 - Styles GitHub's native table of contents panel to match your selected theme
 
-### ⌨️ Keyboard Shortcuts
-| Shortcut | Action |
-|----------|--------|
-| `Alt + R` | Toggle reading mode |
-| `Esc` | Exit reading mode |
+### 🔤 Font Size Resizer
+- Adjust font size with a smooth slider (12px–24px)
+- Scales both markdown content and the outline panel proportionally
+- Preference persists across sessions
 
 ---
 
@@ -78,9 +77,8 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 ## Usage
 
 1. Navigate to any GitHub page with markdown content (README, `.md` files, issues, comments)
-2. Click the **GitGlam** extension icon in the toolbar, or use `Alt + R`
-3. Select your preferred theme from the popup
-4. Toggle features like Focus Mode, Progress Bar, and Reading Time
+2. Select your preferred theme from the popup
+3. Toggle features like Focus Mode, Progress Bar, and Reading Time
 
 ---
 
@@ -116,28 +114,6 @@ GitGlam/
 ├── icons/                     # Extension icons
 └── fonts/                     # Custom fonts
 ```
-
----
-
-## How It Works
-
-- **Content Scripts** inject on `github.com/*` pages at `document_idle`
-- Detects `.markdown-body` elements (READMEs, markdown file views, etc.)
-- All styling is **scoped to `.markdown-body`** — never affects the surrounding GitHub UI
-- Uses a cascade of CSS variables per-theme, with JS-injected `<style>` elements appended to `<body>` to override GitHub's dynamically-loaded dark mode styles
-- Supports GitHub's SPA navigation (Turbo) via event listeners and MutationObserver
-- State is persisted via `chrome.storage.sync`
-
----
-
-## Compatibility
-
-- ✅ GitHub markdown file views (`/blob/.../*.md`)
-- ✅ Repository README sections
-- ✅ Profile READMEs (special username/username repo)
-- ✅ GitHub Issues & Pull Request descriptions
-- ✅ Works with GitHub Light and Dark themes
-- ✅ Handles GitHub SPA (Turbo) navigation
 
 ---
 

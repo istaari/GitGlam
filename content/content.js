@@ -552,25 +552,6 @@
     return true;
   });
 
-  // ---- Keyboard shortcuts ----
-
-  document.addEventListener('keydown', (e) => {
-    // Alt+R — toggle reading mode
-    if (e.altKey && e.key === 'r') {
-      e.preventDefault();
-      toggleReadingMode();
-      return;
-    }
-
-    if (!state.enabled) return;
-
-    // Escape — exit reading mode
-    if (e.key === 'Escape') {
-      if (document.querySelector('.gitglam-lightbox-overlay')) return;
-      toggleReadingMode();
-    }
-  });
-
   // ---- Init / SPA navigation ----
 
   function setup() {
