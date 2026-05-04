@@ -8,7 +8,7 @@ GitGlam is a Chrome extension that transforms GitHub's default markdown renderin
 
 ## Demo
 
-<video src="https://github.com/istaari/GitGlam/raw/main/assets/gitglam_demo.mp4" controls autoplay muted loop width="100%"></video>
+https://github.com/istaari/GitGlam/raw/main/assets/gitglam_demo.mp4
 
 ---
 
