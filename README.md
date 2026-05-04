@@ -4,6 +4,8 @@
 
 GitGlam is a Chrome extension that transforms GitHub's default markdown rendering into a clean, distraction-free reading experience inspired by platforms like Medium, Notion, and more.
 
+![GitGlam Demo](assets/gitglam_demo.gif)
+
 ---
 
 ## Features
