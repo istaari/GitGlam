@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   progressBarToggle.checked = state.progressBar;
   animationsToggle.checked = state.animations;
   nightShiftToggle.checked = state.nightShift;
-  fontSizeRange.value = state.fontSize || 16;
-  fontSizeValue.textContent = (state.fontSize || 16) + 'px';
+  fontSizeRange.value = state.fontSize || 18;
+  fontSizeValue.textContent = (state.fontSize || 18) + 'px';
   columnWidthRange.value = state.columnWidth || 1000;
   columnWidthValue.textContent = (state.columnWidth || 1000) + 'px';
   setActiveTheme(state.theme);

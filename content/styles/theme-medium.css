@@ -19,7 +19,8 @@ body.gitglam-active.gitglam-theme-medium {
 body.gitglam-active.gitglam-theme-medium .markdown-body {
   color: var(--gitglam-text) !important;
   background-color: var(--gitglam-bg) !important;
-  font-family: Georgia, 'Charter', 'Bitstream Charter', 'Noto Serif', serif !important;
+  font-family: 'Charter', 'Bitstream Charter', 'Cambria', Georgia, serif !important;
+  line-height: 1.75 !important;
 }
 
 body.gitglam-active.gitglam-theme-medium .markdown-body h1,
@@ -68,4 +69,27 @@ body.gitglam-active.gitglam-theme-medium .markdown-body code:not(pre code) {
 body.gitglam-active.gitglam-theme-medium .markdown-body strong {
   color: var(--gitglam-heading-color) !important;
   font-weight: 700 !important;
+}
+
+body.gitglam-active.gitglam-theme-medium .markdown-body em {
+  color: var(--gitglam-muted) !important;
+  font-style: italic !important;
+}
+
+body.gitglam-active.gitglam-theme-medium .markdown-body ::selection {
+  background: rgba(26, 137, 23, 0.15) !important;
+  color: inherit !important;
+}
+
+body.gitglam-active.gitglam-theme-medium .markdown-body li::marker {
+  color: var(--gitglam-muted) !important;
+}
+
+body.gitglam-active.gitglam-theme-medium .markdown-body img {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+body.gitglam-active.gitglam-theme-medium .markdown-body table tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02) !important;
 }

@@ -10,7 +10,7 @@
     focusMode: false,
     progressBar: true,
     animations: true,
-    fontSize: 16,
+    fontSize: 18,
     columnWidth: 1000,
     nightShift: false,
   };
@@ -19,21 +19,40 @@
   let markdownBody = null;
   let initialized = false;
 
+  // Guards against "Extension context invalidated" errors that occur when
+  // Chrome reloads the extension while a content script is still running.
+  function isContextValid() {
+    try {
+      return !!chrome.runtime?.id;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function safeSendMessage(msg) {
+    if (!isContextValid()) return;
+    try { chrome.runtime.sendMessage(msg); } catch (_) {}
+  }
+
   // ---- State persistence ----
 
   function loadState() {
     return new Promise((resolve) => {
-      chrome.storage.sync.get('gitglam', (data) => {
-        if (data.gitglam) {
-          state = { ...DEFAULTS, ...data.gitglam };
-        }
-        resolve(state);
-      });
+      if (!isContextValid()) { resolve(state); return; }
+      try {
+        chrome.storage.sync.get('gitglam', (data) => {
+          if (data.gitglam) {
+            state = { ...DEFAULTS, ...data.gitglam };
+          }
+          resolve(state);
+        });
+      } catch (_) { resolve(state); }
     });
   }
 
   function saveState() {
-    chrome.storage.sync.set({ gitglam: state });
+    if (!isContextValid()) return;
+    try { chrome.storage.sync.set({ gitglam: state }); } catch (_) {}
   }
 
   // ---- Markdown detection ----
@@ -555,7 +574,7 @@
     }
 
     // Notify service worker
-    chrome.runtime.sendMessage({ type: 'gitglam:state', enabled: true });
+    safeSendMessage({ type: 'gitglam:state', enabled: true });
 
     // Focus toggle button on page
     createFocusToggle();
@@ -585,7 +604,7 @@
     GitGlamOutline.destroy();
     destroyFocusToggle();
 
-    chrome.runtime.sendMessage({ type: 'gitglam:state', enabled: false });
+    safeSendMessage({ type: 'gitglam:state', enabled: false });
   }
 
   function toggleReadingMode() {
@@ -642,7 +661,8 @@
 
   // ---- Message handling from popup / service worker ----
 
-  chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
+  if (isContextValid()) {
+    chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     switch (msg.type) {
       case 'gitglam:toggle':
         toggleReadingMode();
@@ -666,6 +686,7 @@
     }
     return true;
   });
+}
 
   // ---- Init / SPA navigation ----
 

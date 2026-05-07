@@ -26,7 +26,6 @@ body.gitglam-active.gitglam-theme-nord .markdown-body {
   color: #d8dee9 !important;
   background-color: #2e3440 !important;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif !important;
-  font-size: 16px !important;
 }
 
 body.gitglam-active.gitglam-theme-nord .markdown-body h1,
@@ -88,6 +87,43 @@ body.gitglam-active.gitglam-theme-nord .markdown-body pre {
   background: #272c36 !important;
   border-color: #3b4252 !important;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body em {
+  color: var(--gitglam-muted) !important;
+  font-style: italic !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body ::selection {
+  background: rgba(136, 192, 208, 0.25) !important;
+  color: inherit !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body li::marker {
+  color: #88c0d0 !important;
+}
+
+body.gitglam-active.gitglam-theme-nord .markdown-body table tr:nth-child(even) {
+  background-color: rgba(136, 192, 208, 0.04) !important;
+}
+
+body.gitglam-active.gitglam-theme-nord ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body.gitglam-active.gitglam-theme-nord ::-webkit-scrollbar-track {
+  background: #2e3440;
+}
+
+body.gitglam-active.gitglam-theme-nord ::-webkit-scrollbar-thumb {
+  background: #4c566a;
+  border-radius: 5px;
+  border: 2px solid #2e3440;
+}
+
+body.gitglam-active.gitglam-theme-nord ::-webkit-scrollbar-thumb:hover {
+  background: #5e6e8a;
 }
 
 body.gitglam-active.gitglam-theme-nord .markdown-body li {

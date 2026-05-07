@@ -19,8 +19,7 @@ body.gitglam-active.gitglam-theme-sepia {
 body.gitglam-active.gitglam-theme-sepia .markdown-body {
   color: var(--gitglam-text) !important;
   background-color: var(--gitglam-bg) !important;
-  font-family: 'Merriweather', 'Literata', Georgia, 'Noto Serif', serif !important;
-  font-size: 16px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, 'Apple Color Emoji', Arial, sans-serif, 'Segoe UI Emoji' !important;
 }
 
 body.gitglam-active.gitglam-theme-sepia .markdown-body h1,
@@ -30,12 +29,11 @@ body.gitglam-active.gitglam-theme-sepia .markdown-body h4,
 body.gitglam-active.gitglam-theme-sepia .markdown-body h5,
 body.gitglam-active.gitglam-theme-sepia .markdown-body h6 {
   color: var(--gitglam-heading-color) !important;
-  font-family: 'Merriweather', Georgia, serif !important;
-  font-weight: 900 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif !important;
+  font-weight: 700 !important;
 }
 
 body.gitglam-active.gitglam-theme-sepia .markdown-body h1 {
-  font-size: 2em !important;
   border-bottom: 2px solid var(--gitglam-accent) !important;
   padding-bottom: 0.3em;
 }
@@ -84,9 +82,28 @@ body.gitglam-active.gitglam-theme-sepia .markdown-body hr {
 body.gitglam-active.gitglam-theme-sepia .markdown-body img {
   border: 1px solid var(--gitglam-border);
   box-shadow: 0 2px 8px rgba(67, 52, 34, 0.1);
+  border-radius: 6px;
 }
 
 body.gitglam-active.gitglam-theme-sepia .markdown-body pre {
   background: var(--gitglam-code-bg) !important;
   border-color: var(--gitglam-border) !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body em {
+  color: var(--gitglam-muted) !important;
+  font-style: italic !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body ::selection {
+  background: rgba(139, 69, 19, 0.15) !important;
+  color: inherit !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body li::marker {
+  color: var(--gitglam-accent) !important;
+}
+
+body.gitglam-active.gitglam-theme-sepia .markdown-body table tr:nth-child(even) {
+  background-color: rgba(139, 69, 19, 0.03) !important;
 }

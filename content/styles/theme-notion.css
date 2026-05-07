@@ -34,7 +34,6 @@ body.gitglam-active.gitglam-theme-notion .markdown-body h6 {
 }
 
 body.gitglam-active.gitglam-theme-notion .markdown-body h1 {
-  font-size: 2.5em !important;
   margin-top: 2em !important;
   letter-spacing: -0.03em;
 }
@@ -76,4 +75,28 @@ body.gitglam-active.gitglam-theme-notion .markdown-body ul {
 
 body.gitglam-active.gitglam-theme-notion .markdown-body li::marker {
   color: var(--gitglam-text) !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body strong {
+  color: var(--gitglam-heading-color) !important;
+  font-weight: 700 !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body em {
+  color: var(--gitglam-muted) !important;
+  font-style: italic !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body ::selection {
+  background: rgba(46, 170, 220, 0.18) !important;
+  color: inherit !important;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body img {
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+body.gitglam-active.gitglam-theme-notion .markdown-body table tr:nth-child(even) {
+  background-color: #f7f6f3 !important;
 }
