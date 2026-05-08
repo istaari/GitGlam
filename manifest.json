@@ -2,6 +2,7 @@
   "manifest_version": 3,
   "name": "GitGlam",
   "version": "1.0.1",
+  "homepage_url": "https://istaari.github.io/gitglam/",
   "description": "Beautify GitHub markdown with stunning reading mode — enhanced typography, themes, and more.",
   "permissions": ["storage", "activeTab"],
   "action": {
