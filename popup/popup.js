@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   // Check if we're on a GitHub page
-  if (!tab?.url?.startsWith('https://github.com/')) {
+  const GITHUB_ORIGINS = ['https://github.com/', 'https://github.tools.sap/'];
+  if (!GITHUB_ORIGINS.some(origin => tab?.url?.startsWith(origin))) {
     noMarkdownNotice.style.display = 'block';
     noMarkdownNotice.querySelector('p').textContent = 'GitGlam works on GitHub markdown pages.';
     settingsSection.style.opacity = '0.5';
